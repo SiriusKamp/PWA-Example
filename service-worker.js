@@ -9,19 +9,16 @@ const ASSETS_TO_CACHE = [
 
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.match(event.request).then(response => {
-        const fetchPromise = fetch(event.request).then(networkResponse => {
-          if (networkResponse && networkResponse.status === 200) {
-            cache.put(event.request, networkResponse.clone());
-          }
-          return networkResponse;
-        }).catch(() => {});
-        return response || fetchPromise;
-      });
-    })
+    fetch(event.request)
+      .then(response => {
+        return response;
+      })
+      .catch(() => {
+        return caches.match(event.request);
+      })
   );
 });
+
 
 self.addEventListener('activate', event => {
   event.waitUntil(
