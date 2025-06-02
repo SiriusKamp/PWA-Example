@@ -1,19 +1,10 @@
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js')
-    .then(reg => {
-      console.log('✅ Service Worker registrado:', reg.scope);
-      reg.update(); // Atualiza imediatamente
-    })
-    .catch(err => console.error('❌ Falha ao registrar SW:', err));
-}
-    let deferredPrompt;
+let deferredPrompt;
 const installBtn = document.getElementById('installBtn');
 
-// Escuta o evento de instalação disponível
 window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault(); // Impede o prompt automático
+  e.preventDefault(); 
   deferredPrompt = e; // Salva o evento para usar depois
-  installBtn.style.display = 'flex'; // Mostra o botão
+  installBtn.style.display = 'flex'; 
 });
 
 // Quando o usuário clicar no botão
