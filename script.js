@@ -6,14 +6,6 @@ if ('serviceWorker' in navigator) {
     })
     .catch(err => console.error('❌ Falha ao registrar SW:', err));
 }
-
-
- if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(reg => console.log('✅ Service Worker registrado:', reg.scope))
-        .catch(err => console.error('❌ Falha ao registrar o SW:', err));
-    }
-
     let deferredPrompt;
 const installBtn = document.getElementById('installBtn');
 
