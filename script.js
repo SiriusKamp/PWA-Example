@@ -1,14 +1,4 @@
-window.addEventListener('load', () => {
-    // Verifica se já foi recarregado uma vez para evitar loop infinito
-    if (!sessionStorage.getItem('pageReloaded')) {
-      sessionStorage.setItem('pageReloaded', 'true');
-      location.reload();
-    } else {
-      sessionStorage.removeItem('pageReloaded'); // limpa para recarregamentos futuros
-    }
-  });
-
-  let deferredPrompt;
+let deferredPrompt;
 const installBtn = document.getElementById('installBtn');
 
 window.addEventListener('beforeinstallprompt', (e) => {
