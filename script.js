@@ -1,3 +1,11 @@
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js')
+    .then(reg => {
+      console.log('✅ Service Worker registrado:', reg.scope);
+      reg.update(); // Atualiza imediatamente
+    })
+    .catch(err => console.error('❌ Falha ao registrar SW:', err));
+}
 let deferredPrompt;
 const installBtn = document.getElementById('installBtn');
 
